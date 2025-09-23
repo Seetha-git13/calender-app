@@ -1,0 +1,35 @@
+<!-- <p>calendar works!</p> -->
+<div class="calendar-root">
+    <!-- header and navigation -->
+     <div class="header">
+        <button class="nav-btn" (click)="prevMonth()" [disabled]="loading">◀</button> {{ monthLabel() }}
+        <!-- <div class="month-label"></div> -->
+        <button class="nav-btn" (click)="nextMonth()" [disabled]="loading">▶</button>
+    
+     </div>
+    <div *ngIf="loading" class="loading">Loading Events...</div>
+
+    <!-- grid -->
+     <div class="calendar-grid" *ngIf="!loading">
+        <!-- weekday heading -->
+            <div class="weekday" *ngFor="let days of weekdays">
+                {{days}}
+            </div>
+            <!-- day -->
+             <div class="day-cell" *ngFor="let day of calendarDays" [class.other-month]="isOtherMonth(day)" (click)="createEvent(day)" title="{{day | date:'fullDate'}}" >
+                <div class="day-number">{{day | date :'d'}}</div>
+                <!-- event pills -->
+                 <div class="events">
+                    <div class="event-pill" *ngFor="let ev of eventsForDay(day)" (click)="editEvent(ev,$event)" [style.border-left]="'4px solid '+ev.color" >
+                        <div>{{ev.title}}-{{ev.notes}}</div>
+                       <div>{{ formatTimeRange(ev) }}</div>
+
+                    </div>
+                 </div>
+             </div>
+     </div>
+
+    <!-- create/edit -->
+    <app-event *ngIf="showModel" [initialDate]="modelDate" [editingEvent]="editingEvent" (close)="updateEvent()">
+    </app-event>
+</div>

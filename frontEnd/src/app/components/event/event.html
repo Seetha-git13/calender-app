@@ -1,0 +1,40 @@
+<p>event works!</p>
+
+<div class="overlay" (click)="cancel()">
+  <div class="modal" (click)="$event.stopPropagation()">
+    <h3>{{ editingEvent ? 'Edit Event' : 'Create Event' }}</h3>
+
+    <form [formGroup]="form" (ngSubmit)="save()">
+      <label>Title*</label>
+      <input formControlName="title" type="text" />
+
+      <div class="row">
+        <div class="col">
+          <label>Start*</label>
+          <input formControlName="start" type="datetime-local" />
+        </div>
+        <div class="col">
+          <label>End*</label>
+          <input formControlName="end" type="datetime-local" />
+        </div>
+      </div>
+
+      <label>Category*</label>
+      <select formControlName="category">
+        <option *ngFor="let c of categories" [value]="c.value">{{ c.label }}</option>
+      </select>
+
+      <label>Color</label>
+      <input formControlName="color" type="color" />
+
+      <label>Notes</label>
+      <textarea formControlName="notes" rows="3"></textarea>
+
+      <div class="actions">
+        <button type="submit" class="btn save">{{ editingEvent ? 'Save' : 'Create' }}</button>
+        <button type="button" class="btn cancel" (click)="cancel()">Cancel</button>
+        <button *ngIf="editingEvent" type="button" class="btn delete" (click)="delete()">Delete</button>
+      </div>
+    </form>
+  </div>
+</div>

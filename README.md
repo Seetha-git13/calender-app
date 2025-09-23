@@ -1,6 +1,40 @@
-# CalenderApp
+## Angular Calendar App
+
+A simple calendar application with event management, built using Angular 20 (standalone components).  
+No external calendar plugins. Events are stored in `localStorage`.
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.2.
+
+---
+
+## Features
+- Monthly calendar view with date grid
+- Create, edit, and delete events
+- Event categories with color coding
+- Navigate between months
+- Data persistence with localStorage
+- Built with Angular 20 standalone components
+
+---
+
+## Tech Stack
+- Angular 20 (standalone)
+- TypeScript
+- RxJS (BehaviorSubject for state)
+- SCSS for styling
+
+---
+
+##  Setup Instructions
+1. Clone the repo:
+   ```bash
+   git clone https://github.com/Seetha-git13/calendar-app.git
+   cd calendar-app
+
+## Install Dependencies
+    ```bash
+    npm install
+    ```
 
 ## Development server
 
@@ -33,7 +67,6 @@ To build the project run:
 ```bash
 ng build
 ```
-
 This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 
 ## Running unit tests
@@ -43,16 +76,6 @@ To execute unit tests with the [Karma](https://karma-runner.github.io) test runn
 ```bash
 ng test
 ```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
 
 ## Additional Resources
 

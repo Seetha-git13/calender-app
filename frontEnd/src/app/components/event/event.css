@@ -1,0 +1,62 @@
+.overlay { 
+    position: fixed; 
+    inset:0; 
+    display:flex; 
+    align-items:center; 
+    justify-content:center; 
+    background:rgba(0,0,0,0.45); 
+    z-index:999; 
+}
+.modal 
+{ 
+    width:420px; 
+    max-width:95%; 
+    background:#fff; 
+    padding:16px; 
+    border-radius:10px; 
+    box-shadow:0 12px 30px rgba(0,0,0,0.15); 
+}
+.row { 
+    display:flex; 
+    gap:8px; 
+}
+.col { 
+    flex:1; 
+}
+label { 
+    display:block; 
+    margin-top:8px; 
+    font-size:13px; 
+}
+input, select, textarea { 
+    width:100%; 
+    padding:8px; 
+    margin-top:6px; 
+    box-sizing:border-box; 
+    border-radius:6px; 
+    border:1px solid #e5e7eb; 
+}
+.actions { 
+    display:flex; 
+    gap:8px; 
+    margin-top:12px; 
+    align-items:center; 
+}
+.btn { 
+    padding:8px 12px; 
+    border-radius:6px; 
+    border:none; 
+    cursor:pointer; 
+}
+.save { 
+    background:#059669; 
+    color:#fff; 
+}
+.cancel { 
+    background:#f3f4f6; 
+}
+.delete { 
+    background:#ef4444; 
+    color:#fff; 
+    margin-left:auto; 
+}
