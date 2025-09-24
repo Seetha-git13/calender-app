@@ -17,19 +17,19 @@ Frontend(Angular 20)
 - Built with Angular 20 standalone components
 
 Backend (Node.js + Express)
--POST /check-conflicts — Check for overlapping events for participants
--POST /suggest-times — Suggest 3 alternative slots for conflicting events
--Conflict detection with buffer time (default: 15 min)
--Suggests time slots within working hours (9 AM–5 PM)
--JSON or in-memory event store (can be extended to use DB)
+- POST /check-conflicts — Check for overlapping events for participants
+- POST /suggest-times — Suggest 3 alternative slots for conflicting events
+- Conflict detection with buffer time (default: 15 min)
+- Suggests time slots within working hours (9 AM–5 PM)
+- JSON or in-memory event store (can be extended to use DB)
 ---
 
 ## Tech Stack
 
-Frontend -	Angular 20 (Standalone), SCSS
-Backend	-Node.js, Express
-Storage-LocalStorage (frontend), In-memory (backend)
-Testing	-Karma (Angular)
+- Frontend -	Angular 20 (Standalone), SCSS
+- Backend	-Node.js, Express
+- Storage-LocalStorage (frontend), In-memory (backend)
+- Testing	-Karma (Angular)
 
 ---
 
@@ -41,8 +41,8 @@ Testing	-Karma (Angular)
 
 ## Folder Structure
 calendar-app/
-├── frontend/      # Angular 20 app
-└── backend/       # Node.js + Express API
+- frontend/     
+- backend/       
 
 ## Install Dependencies
     ```bash
@@ -91,24 +91,12 @@ node server.js
 ```
 ## API Endpoints
 1. POST /check-conflicts
-Check if a proposed event overlaps existing events for any participant.
-Body:
+    - Check if a proposed event overlaps existing events for any participant.
 
-{
-  "start": "2025-09-25T14:00:00Z",
-  "end": "2025-09-25T15:00:00Z",
-  "participants": ["alice@example.com", "bob@example.com"]
-}
 
 2. POST /suggest-times
-Suggests 3 alternative times avoiding conflicts and outside buffer.
-Body:
+    - Suggests 3 alternative times avoiding conflicts and outside buffer.
 
-{
-  "start": "2025-09-25T14:00:00Z",
-  "end": "2025-09-25T15:00:00Z",
-  "participants": ["alice@example.com", "bob@example.com"]
-}
 
 ## Production Build & Deployment
 
