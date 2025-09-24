@@ -14,7 +14,8 @@ function checkConflicts(proposed, existing, buffer = DEFAULT_BUFFER_MINUTES) {
     const evEnd = new Date(ev.end);
 
     // Check if participants overlap
-    const sharedParticipants = proposed.participants.filter(p => ev.participants.includes(p));
+    const sharedParticipants = (proposed.participants || []).filter(p => (ev.participants || []).includes(p));
+
     if (sharedParticipants.length === 0) continue;
 
     // Add buffer time

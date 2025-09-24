@@ -1,6 +1,6 @@
 ## Angular Calendar App
 
-A simple calendar application with event management, built using Angular 20 (standalone components).  
+A full-stack calendar application with conflict detection and smart time suggestion, built with Angular 20 (standalone) and Node.js/Express.  
 No external calendar plugins. Events are stored in `localStorage`.
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.2.
@@ -8,6 +8,7 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 ---
 
 ## Features
+Frontend(Angular 20)
 - Monthly calendar view with date grid
 - Create, edit, and delete events
 - Event categories with color coding
@@ -15,24 +16,37 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 - Data persistence with localStorage
 - Built with Angular 20 standalone components
 
+Backend (Node.js + Express)
+-POST /check-conflicts — Check for overlapping events for participants
+-POST /suggest-times — Suggest 3 alternative slots for conflicting events
+-Conflict detection with buffer time (default: 15 min)
+-Suggests time slots within working hours (9 AM–5 PM)
+-JSON or in-memory event store (can be extended to use DB)
 ---
 
 ## Tech Stack
-- Angular 20 (standalone)
-- TypeScript
-- RxJS (BehaviorSubject for state)
-- SCSS for styling
+
+Frontend -	Angular 20 (Standalone), SCSS
+Backend	-Node.js, Express
+Storage-LocalStorage (frontend), In-memory (backend)
+Testing	-Karma (Angular)
 
 ---
 
-##  Setup Instructions
+##  Setup Instructions(Frontend)
 1. Clone the repo:
    ```bash
    git clone https://github.com/Seetha-git13/calendar-app.git
    cd calendar-app
 
+## Folder Structure
+calendar-app/
+├── frontend/      # Angular 20 app
+└── backend/       # Node.js + Express API
+
 ## Install Dependencies
     ```bash
+    cd frontEnd
     npm install
     ```
 
@@ -45,21 +59,6 @@ ng serve
 ```
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
 ## Building
 
 To build the project run:
@@ -76,6 +75,57 @@ To execute unit tests with the [Karma](https://karma-runner.github.io) test runn
 ```bash
 ng test
 ```
+
+##  Setup Instructions(Backend)
+## Install Dependencies
+```bash
+cd backend
+npm install
+```
+## Development server
+
+To start a local development server, run:
+
+```bash
+node server.js
+```
+## API Endpoints
+1. POST /check-conflicts
+Check if a proposed event overlaps existing events for any participant.
+Body:
+
+{
+  "start": "2025-09-25T14:00:00Z",
+  "end": "2025-09-25T15:00:00Z",
+  "participants": ["alice@example.com", "bob@example.com"]
+}
+
+2. POST /suggest-times
+Suggests 3 alternative times avoiding conflicts and outside buffer.
+Body:
+
+{
+  "start": "2025-09-25T14:00:00Z",
+  "end": "2025-09-25T15:00:00Z",
+  "participants": ["alice@example.com", "bob@example.com"]
+}
+
+## Production Build & Deployment
+
+You can deploy the frontend and backend separately or together via tools like:
+
+    -Nginx reverse proxy
+    -Docker (multi-stage builds)
+    -Vercel + Render combo
+    -Firebase (frontend) + Railway/Heroku (backend)
+
+## Future Enhancements
+
+    -Replace in-memory storage with MongoDB/PostgreSQL
+    -Add user authentication
+    -Extend time suggestion to span multiple days
+    -Integration with Google Calendar
+
 
 ## Additional Resources
 
